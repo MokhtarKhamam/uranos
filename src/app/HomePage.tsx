@@ -7,11 +7,20 @@ import axios from "axios";
 import { headCells } from "../constant/table";
 import TableGrid from "../components/Table";
 
+interface ErrorResponse {
+  message: string;
+  response: {
+    data: {
+      message: string;
+    };
+  };
+}
+
 const HomePage = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isFetching, error } = useQuery(
+  const { data, isFetching, error } = useQuery<any, ErrorResponse>(
     ["products", search, currentPage],
     () => {
       return axios.get(
@@ -49,7 +58,7 @@ const HomePage = () => {
             totalPages={totalPages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-            error={error?.response?.data.message}
+            error={error?.response?.data?.message}
           />
         </Paper>
       </Box>

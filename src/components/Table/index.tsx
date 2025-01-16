@@ -43,7 +43,7 @@ const TableGrid = ({
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
+    _: React.MouseEvent<unknown>,
     property: keyof Data
   ) => {
     const isAsc = orderBy === property && order === "asc";
@@ -59,7 +59,7 @@ const TableGrid = ({
     [order, orderBy, page, rowsPerPage, rows]
   );
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
 
@@ -71,7 +71,7 @@ const TableGrid = ({
   };
 
   const handlePageChange = useCallback(
-    (event: React.ChangeEvent<unknown>, value: number) => {
+    (_: React.ChangeEvent<unknown>, value: number) => {
       setCurrentPage(value);
     },
     []
